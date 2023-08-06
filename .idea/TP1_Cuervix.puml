@@ -1,0 +1,34 @@
+@startuml
+entity User{
+PK  user_id int
+    name varchar
+U   mail varchar
+    age date
+}
+entity Subscription{
+PK subs_id int
+}
+entity Content{
+PK content_id int
+   name varchar
+   description varchar
+}
+entity Content_type{
+PK ct_id int
+   name varchar
+   description varchar
+}
+entity Content_Attribute{}
+entity ContentType_AttributeType{}
+entity Attribute_type{}
+
+
+
+Content <- Content_Attribute
+Content_Attribute <- Attribute_type
+Attribute_type <- ContentType_AttributeType
+ContentType_AttributeType <- Content_type
+Content <- Content_type
+
+
+@enduml
