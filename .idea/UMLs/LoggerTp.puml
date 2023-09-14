@@ -1,0 +1,15 @@
+@startuml
+'La ventaja de tener una interfaz comun es que son reemplazables. Si todos comparten la misma interfaz
+'se puede cambiar el comportamiento de todos los objetos que la implementan de una sola vez.
+interface Logger{
+    +log()
+}
+class ConsoleLogger implements Logger
+class SilentLogger implements Logger
+class FileLogger implements Logger
+class HTTPLogger implements Logger
+class DBLogger implements Logger
+class MultiLogger implements Logger
+
+
+@enduml

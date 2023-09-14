@@ -1,0 +1,44 @@
+@startuml
+interface Logger{
+    +log(Event event
+}
+enum Event{
+    +LOGIN
+    +LOGOUT
+    +CREATE
+    +UPDATE
+    +DELETE
+}
+abstract class MapperLogger implements Logger{
+    +log(Event event)
+    - map(Event event)
+}
+class ContextLogger extends MapperLogger{
+    - map(Event event)
+}
+class ObfuscateLogger extends MapperLogger{
+    - map(Event event)
+}
+abstract class FilterLogger implements Logger{
+    +log(Event event)
+    - shouldFilter(Event event)
+    * writerLogger
+}
+class TypeFilterLogger extends FilterLogger{
+    - shouldFilter(Event event)
+    * enum TypeFilterType
+}
+class FilterContextLogger extends FilterLogger, ContextLogger{
+    - shouldFilter(Event event)
+}
+class WriterLogger implements Logger{
+    +log(Event event)
+}
+class SilentLogger extends Logger{
+    +log(Event event)
+}
+class DataBaseLogger extends writerLogger{
+    +log(Event event)
+}
+
+@enduml
