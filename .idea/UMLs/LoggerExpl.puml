@@ -1,4 +1,6 @@
 @startuml
+'esta implementacion esta mal, porque buscamos sacarnos las herencias de ensima, asi que separamos
+'en interfaces diferentes.
 interface Logger{
     +log(Event event
 }
